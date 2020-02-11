@@ -1,9 +1,9 @@
 // Action type when we recieve and dispatch all of our states to our store.
-export const RECIEVE_TWEETS = "RECIEVE_TWEETS";
+export const RECEIVE_TWEETS = "RECEIVE_TWEETS";
 // Recieve tweets action creator.
-export function recieveTweets(tweets){
+export function receiveTweets(tweets){
 return{
-    type: RECIEVE_TWEETS,
+    type: RECEIVE_TWEETS,
     tweets,
 }
 }
