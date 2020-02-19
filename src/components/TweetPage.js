@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Tweet from "./Tweet";
 import NewTweet from "./NewTweet";
-import { TiArrowRepeatOutline } from "react-icons/ti";
 class TweetPage extends Component {
   render() {
     const { id, replies } = this.props;

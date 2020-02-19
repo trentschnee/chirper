@@ -16,13 +16,18 @@ function addTweet(tweet) {
   };
 }
 export function handleAddTweet(text, replyingTo) {
-  return function(dispatch, getState) {
+  return (dispatch, getState) => {
     const { authedUser } = getState();
+
     dispatch(showLoading());
-    return saveTweet({ text, author: authedUser, replyingTo }).then(tweet =>
-      dispatch(addTweet(tweet))
-    );
-    dispatch(hideLoading());
+
+    return saveTweet({
+      text,
+      author: authedUser,
+      replyingTo
+    })
+      .then(tweet => dispatch(addTweet(tweet)))
+      .then(() => dispatch(hideLoading()));
   };
 }
 //takes in an object that has an id, authedUser property, and hasLiked property

@@ -8,7 +8,7 @@ import { handleToggleTweet } from "../actions/tweets";
 import { Link, withRouter } from "react-router-dom";
 class Tweet extends Component {
   handleLike = e => {
-    e.preventDefault;
+    e.preventDefault();
     const { dispatch, tweet, authedUser } = this.props;
     dispatch(
       handleToggleTweet({
