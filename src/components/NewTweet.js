@@ -2,10 +2,12 @@ import React, { Component } from "react";
 // Need access to dispatch so we invoke connect
 import { connect } from "react-redux";
 import { handleAddTweet } from "../actions/tweets";
+import { Redirect } from "react-router-dom";
 class NewTweet extends Component {
   // Using react state because it'd be more complicated and we wouldn't getting any benefit using redux state.
   state = {
-    text: ""
+    text: "",
+    toHome: false
   };
   handleChange = e => {
     const text = e.target.value;
@@ -19,12 +21,15 @@ class NewTweet extends Component {
     const { dispatch, id } = this.props;
     dispatch(handleAddTweet(text, id));
     //when done submitting, set the text to an empty string.
-    this.setState(() => ({ text: "" }));
+    // if we reply to a tweet, we don't want to be taken to homeview
+    this.setState(() => ({ text: "", toHome: id ? false : true }));
   };
   render() {
-    const { text } = this.state;
+    const { text, toHome } = this.state;
     {
-      /* TODO: Redirect to homeview if submitted*/
+      if (toHome) {
+        return <Redirect to="/" />;
+      }
     }
     const tweetLeft = 280 - text.length;
     return (
